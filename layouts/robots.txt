@@ -5,5 +5,4 @@ User-agent: *
 Disallow: /
 {{- else -}}
 Allow: /
-Disallow: bogus/
 {{- end -}}
