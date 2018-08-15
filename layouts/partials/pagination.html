@@ -1,4 +1,4 @@
-<nav class="blog-pagination">
+<nav class="blog-pagination text-center">
   {{ if and (.Paginator.HasPrev) (.Paginator.HasNext) }}
   <a class="btn btn-outline-primary" href="{{ .Paginator.Prev.URL }}" rel="prev" role="button">{{ i18n "paginatorPrevious" }}</a>
   <a class="btn btn-outline-primary" href="{{ .Paginator.Next.URL }}" rel="next" role="button">{{ i18n "paginatorNext" }}</a>
