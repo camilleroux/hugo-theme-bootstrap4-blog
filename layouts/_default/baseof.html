@@ -63,16 +63,13 @@
 
     {{ block "body" . }}
     <div class="container">
-      <div class="articles col-md-12">
-        <div class="blog-main">
+      <div class="blog-main col-md-12">
 
-          {{ block "main" . }}
-          <!-- The part of the page that begins to differ between templates -->
-          {{ end }}
+        {{ block "main" . }}
+        <!-- The part of the page that begins to differ between templates -->
+        {{ end }}
 
-        </div> {{ "<!-- /.blog-main -->" | safeHTML }}
-
-      </div> {{ "<!-- /.articles -->" | safeHTML }}
+      </div> {{ "<!-- /.blog-main -->" | safeHTML }}
     </div> {{ "<!-- /.container -->" | safeHTML }}
     {{ end }}
 

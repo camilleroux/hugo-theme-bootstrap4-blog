@@ -56,11 +56,11 @@
 {{ define "main" }}
 {{ $dateFormat := default "Mon Jan 2, 2006" (index .Site.Params "date_format") }}
 
-<article>
+<article class="article-complete">
   <header>
     <h1><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h1>
     <div class="blog-post-meta">
-      <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format $dateFormat }}</time>
+      {{ if not .Date.IsZero }}<time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format $dateFormat }}</time>{{ end }}
       <span class="author">{{ .Params.author | default .Site.Params.author }}</span>
       {{ if or (.Params.categories) (.Params.tags) }} {{ partial "meta-terms.html" . }}{{ end }}
     </div>

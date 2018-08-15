@@ -1,6 +1,6 @@
 {{ $dateFormat := default "Mon Jan 2, 2006" (index .Site.Params "date_format") }}
 
-<article>
+<article class="article-summary">
   <header>
     <h2><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
     <p class="blog-post-meta">
