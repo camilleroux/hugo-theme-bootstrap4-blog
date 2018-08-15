@@ -1,9 +1,10 @@
 {{ define "main" }}
-
+<div id="taxonomy">
 <header class="mt-3 border-bottom">
     <h1 class="display-4">{{.Title}}</h1>
 </header>
 
+<div id="articles">
 {{ $truncate := default true .Site.Params.truncate }}
 {{ range .Paginator.Pages }}
 {{ if $truncate }}
@@ -16,6 +17,8 @@
 {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
 {{ partial "pagination.html" . }}
 {{ end }}
+</div>
+</div>
 
 {{ end }}
 
