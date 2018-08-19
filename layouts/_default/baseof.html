@@ -26,6 +26,9 @@
     {{ partial "cookie-consent.html" . }}
     {{ end }}
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
     {{ partial "head-custom.html" . }}
   </head>
 
@@ -33,26 +36,24 @@
 
     {{ block "masthead" . }}
     <div class="blog-masthead">
-        <nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bg-primary">
-            <div class="container">
-              <a class="navbar-brand" href="{{ .Site.BaseURL | absLangURL }}">{{ .Site.Title | safeHTML }}</a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="{{ .Site.BaseURL | absLangURL }}">{{ .Site.Title | safeHTML }}</a>  
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item {{ if .IsHome }}active{{ end }}">
-                    <a class="nav-link" href="{{ .Site.BaseURL | absLangURL }}">{{ i18n "home" }}</a>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggler">
+              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item {{ if .IsHome }}active{{ end }}">
+                  <a class="nav-link" href="{{ .Site.BaseURL | absLangURL }}">{{ i18n "home" }}</a>
+                </li>
+                {{- $currentPage := . -}}
+                {{ range .Site.Menus.navbar }}
+                  {{ $menuURL := .URL | absLangURL }}
+                  <li class="nav-item"></li>
+                    <a class="nav-link{{if or ($currentPage.IsMenuCurrent "navbar" .) ($currentPage.HasMenuCurrent "navbar" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
                   </li>
-                  {{- $currentPage := . -}}
-                  {{ range .Site.Menus.navbar }}
-                    {{ $menuURL := .URL | absLangURL }}
-                    <li class="nav-item"></li>
-                      <a class="nav-link{{if or ($currentPage.IsMenuCurrent "navbar" .) ($currentPage.HasMenuCurrent "navbar" .) }} active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
-                    </li>
-                  {{ end }}
-                </ul>
-              </div>
+                {{ end }}
+              </ul>
             </div>
           </div>
         </nav>
