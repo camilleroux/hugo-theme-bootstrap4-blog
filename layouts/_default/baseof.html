@@ -77,10 +77,8 @@
       <div class="container">
         <hr class="border-primary" />
         <p>
-          {{ if .Site.Copyright }}
-            {{ .Site.Copyright | markdownify }}
-          {{ else }}
-            Blog template created by <a href="https://twitter.com/mdo">@mdo</a>, ported to Hugo by <a href='https://twitter.com/mralanorth'>@mralanorth</a>.
+          {{ if .Site.Params.footerText }}
+            {{ .Site.Params.footerText | markdownify }}
           {{ end }}
         </p>
       </div>
