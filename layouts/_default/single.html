@@ -69,6 +69,7 @@
   {{ .Content }}
   </div>
 
+
   {{ if .IsTranslated }}
   <h4>{{ i18n "translations" }}</h4>
   <ul>
@@ -78,6 +79,15 @@
     </li>
     {{ end }}
   </ul>
+  {{ end }}
+
+  {{ if not .Site.IsServer }}
+  <hr>
+  <footer>
+    {{if isset .Site.Params "discourseurl" }}
+      {{ partial "discourse-comments.html" . }}
+    {{ end }}
+  </footer>
   {{ end }}
 
   {{ if or (ne ($.Param "sharingicons") false) (.Site.DisqusShortname) }}
@@ -91,6 +101,8 @@
   {{ if and (.Site.DisqusShortname) (ne .Params.comments false) }}
   {{ template "_internal/disqus.html" . }}
   {{ end }}
+
+  
   </footer>
   {{ end }}
 
