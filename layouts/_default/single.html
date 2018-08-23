@@ -81,6 +81,9 @@
   </ul>
   {{ end }}
 
+
+  
+  {{ if eq .Section "posts" }}
   {{ if not .Site.IsServer }}
   <hr>
   <footer>
@@ -88,6 +91,7 @@
       {{ partial "discourse-comments.html" . }}
     {{ end }}
   </footer>
+  {{ end }}
   {{ end }}
 
   {{ if or (ne ($.Param "sharingicons") false) (.Site.DisqusShortname) }}
